@@ -169,7 +169,7 @@
   grid-gap: 2rem;
 }
 .about .jobs__job {
-  background: #414141;
+  background: rgb(64.5, 64.5, 64.5);
   padding: 0.5rem;
   border-bottom: 5px solid #a081a3;
 }
@@ -178,6 +178,13 @@
 }
 .about .jobs__job h6 {
   margin: 0.3rem 0;
+}
+.about .jobs__job ul {
+  list-style: circle;
+  padding: 1rem;
+}
+.about .jobs__job ul li {
+  line-height: 1.5rem;
 }
 .about .social-icons {
   display: flex;
