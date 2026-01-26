@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "live-server dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/makemile/my-portafolio/issues"
   },
-  "homepage": "https://github.com/makemile/my-portafolio#readme"
+  "homepage": "https://github.com/makemile/my-portafolio#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
 }
