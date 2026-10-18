@@ -13,7 +13,7 @@ $secondary-color: #a081a3;
 }
 
 @function set-text-color($color) {
-  @if (color.lightness($color) > 40%) {
+  @if (color.channel($color, "lightness", $space: hsl) > 40%) {
     @return #000;
   }
 
