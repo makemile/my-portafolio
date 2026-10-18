@@ -1,0 +1,55 @@
+---
+import Layout from "@layouts/Layout.astro";
+import "@styles/main.scss";
+import "@styles/_menu.scss";
+import "@styles/_projects.scss";
+import "@styles/_responsive.scss";
+---
+
+<Layout title="Kengya Moncada" activePage="home">
+  <section class="home">
+    <h2>Hi! My Name Is</h2>
+    <h1 class="home__name">
+      Kengya <span class="home__name--last">Moncada</span>
+    </h1>
+    <h2>Frontend Engineer</h2>
+
+    <div class="social-icons">
+      <a href="https://github.com/makemile?tab=repositories">
+        <i class="fab fa-github fa-2x"></i>
+      </a>
+      <a href="http://www.linkedin.com/in/kengyamoncada">
+        <i class="fa-brands fa-linkedin fa-2x"></i>
+      </a>
+    </div>
+  </section>
+</Layout>
+<script>
+  const menuBtn = document.querySelector<HTMLElement>(".menu-btn");
+  const hamburger = document.querySelector<HTMLElement>(".menu-btn__burger");
+  const nav = document.querySelector<HTMLElement>(".nav");
+  const menuNav = document.querySelector<HTMLElement>(".menu-nav");
+  const navItems = document.querySelectorAll<HTMLElement>(".menu-nav__item");
+
+  let showMenu: boolean = false;
+
+  menuBtn?.addEventListener("click", toggleMenu, false);
+
+  function toggleMenu() {
+    if (!showMenu) {
+      hamburger?.classList.add("open");
+      nav?.classList.add("open");
+      menuNav?.classList.add("open");
+      navItems?.forEach((item) => item.classList.add("open"));
+
+      showMenu = true;
+    } else {
+      hamburger?.classList.remove("open");
+      nav?.classList.remove("open");
+      menuNav?.classList.remove("open");
+      navItems?.forEach((item) => item.classList.remove("open"));
+
+      showMenu = false;
+    }
+  }
+</script>

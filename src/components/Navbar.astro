@@ -1,0 +1,34 @@
+---
+interface Props {
+  activePage?: string;
+}
+const { activePage = "home" } = Astro.props;
+---
+
+<header>
+  <div class="menu-btn">
+    <span class="menu-btn__burger"></span>
+  </div>
+
+  <nav class="nav">
+    <ul class="menu-nav">
+      <li class:list={["menu-nav__item", { active: activePage === "home" }]}>
+        <a href="/" class="menu-nav__link"> Inicio </a>
+      </li>
+
+      <li class:list={["menu-nav__item", { active: activePage === "about" }]}>
+        <a href="/about" class="menu-nav__link"> Sobre mí </a>
+      </li>
+
+      <li
+        class:list={["menu-nav__item", { active: activePage === "projects" }]}
+      >
+        <a href="/projects" class="menu-nav__link"> Mis proyectos </a>
+      </li>
+
+      <li class:list={["menu-nav__item", { active: activePage === "contact" }]}>
+        <a href="/contact" class="menu-nav__link"> Contactame </a>
+      </li>
+    </ul>
+  </nav>
+</header>

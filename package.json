@@ -1,23 +1,20 @@
 {
-  "name": "my-portafolio",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "astro-app",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.22.0"
+  },
   "scripts": {
-    "start": "live-server dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/makemile/my-portafolio.git"
+  "dependencies": {
+    "astro": "^7.4.0"
   },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/makemile/my-portafolio/issues"
-  },
-  "homepage": "https://github.com/makemile/my-portafolio#readme",
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "sass": "^1.105.2"
   }
 }
