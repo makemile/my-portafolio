@@ -32,3 +32,32 @@ const { activePage = "home" } = Astro.props;
     </ul>
   </nav>
 </header>
+<script>
+  const menuBtn = document.querySelector<HTMLElement>(".menu-btn");
+  const hamburger = document.querySelector<HTMLElement>(".menu-btn__burger");
+  const nav = document.querySelector<HTMLElement>(".nav");
+  const menuNav = document.querySelector<HTMLElement>(".menu-nav");
+  const navItems = document.querySelectorAll<HTMLElement>(".menu-nav__item");
+
+  let showMenu: boolean = false;
+
+  menuBtn?.addEventListener("click", toggleMenu, false);
+
+  function toggleMenu() {
+    if (!showMenu) {
+      hamburger?.classList.add("open");
+      nav?.classList.add("open");
+      menuNav?.classList.add("open");
+      navItems?.forEach((item) => item.classList.add("open"));
+
+      showMenu = true;
+    } else {
+      hamburger?.classList.remove("open");
+      nav?.classList.remove("open");
+      menuNav?.classList.remove("open");
+      navItems?.forEach((item) => item.classList.remove("open"));
+
+      showMenu = false;
+    }
+  }
+</script>
