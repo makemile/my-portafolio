@@ -28,6 +28,9 @@
 
   .about__bio {
     font-size: 1.5rem;
+    background: transparent;
+    backdrop-filter: blur(35px);
+    border-radius: 1rem;
   }
 
   .projects {
