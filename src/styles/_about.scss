@@ -33,6 +33,52 @@
     }
   }
 
+  &__skills {
+    width: 80vw;
+    margin: 2rem auto 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1.5rem;
+
+    @include config.media-md {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include config.media-lg {
+      width: 60vw;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &-category {
+      background: color.adjust(config.$primary-color, $lightness: 10%);
+      padding: 1rem;
+      border-top: 3px solid config.$secondary-color;
+
+      h3 {
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          line-height: 1.6rem;
+          color: config.set-text-color(config.$primary-color);
+          display: flex;
+          align-items: center;
+
+          &::before {
+            content: "▹";
+            color: config.$secondary-color;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
   .jobs {
     width: 60vw;
     margin: 2rem auto 0 auto;
@@ -65,7 +111,6 @@
     }
   }
 
-
   .social-icons {
     display: flex;
     flex-direction: column;
@@ -75,5 +120,4 @@
     transform:
       rotate(90deg) translate(-3rem, -5rem);
   }
-
 }
