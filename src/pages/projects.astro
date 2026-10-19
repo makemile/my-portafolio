@@ -2,9 +2,9 @@
 import Layout from "@layouts/Layout.astro";
 import { Image } from "astro:assets";
 import redsocial from "@images/redsocial.png";
-import ShopHome from "@images/ShopHome.webp";
-import burgerqueen from "@images/burgerqueen.jpg";
+import ShopHome from "@images/ShopHome.jpeg";
 import poke from "@images/poke.jpg";
+import smartdespensa from "@images/smartdespensa.jpeg";
 
 import "@styles/_projects.scss";
 import "@styles/_responsive.scss";
@@ -18,74 +18,149 @@ import "@styles/_responsive.scss";
 
     <div class="projects__items">
       <div class="projects__item">
-        <Image src={redsocial} alt="My Project" />
+        <Image src={smartdespensa} alt="Smart Despensa Project" />
         <div class="projects__btns">
-          <a
-            href="https://lim-015-social-network.vercel.app/"
-            class="projects__btn"
-          >
-            <i class="fas fa-eye"></i> Preview
-          </a>
-          <a
-            href="https://github.com/makemile/makemile.github.io-LIM015-social-network"
-            class="projects__btn"
-          >
-            <i class="fab fa-github"></i> Github
-          </a>
+          <div class="projects__info">
+            <h3>Smart Despensa</h3>
+            <div class="projects__tags">
+              <span>Angular</span>
+              <span>Android</span>
+              <span>Capacitor</span>
+              <span>SASS</span>
+              <span>Firebase</span>
+            </div>
+          </div>
+          <div class="projects__actions">
+            <a
+              href="https://smart-despensa.web.app/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="projects__btn"
+            >
+              <i class="fas fa-eye"></i> Preview
+            </a>
+            <a
+              href="https://github.com/makemile/smart-despensa"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="projects__btn"
+            >
+              <i class="fab fa-github"></i> Github
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="projects__item">
+        <Image src={redsocial} alt="Red Social Project" />
+        <div class="projects__btns">
+          <div class="projects__info">
+            <h3>Red Social Tech</h3>
+            <div class="projects__tags">
+              <span>JavaScript</span>
+              <span>Firebase</span>
+              <span>Jest</span>
+              <span>HTML5/CSS3</span>
+            </div>
+          </div>
+          <div class="projects__actions">
+            <a
+              href="https://lim-015-social-network.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="projects__btn"
+            >
+              <i class="fas fa-eye"></i> Preview
+            </a>
+            <a
+              href="https://github.com/makemile/makemile.github.io-LIM015-social-network"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="projects__btn"
+            >
+              <i class="fab fa-github"></i> Github
+            </a>
+          </div>
         </div>
       </div>
       <div class="projects__item">
-        <Image src={ShopHome} alt="My Project" />
+        <Image src={ShopHome} alt="Shopping Fashion Project" />
         <div class="projects__btns">
-          <a href="https://shopping-fashion.vercel.app" class="projects__btn">
-            <i class="fas fa-eye"></i> Preview
-          </a>
-          <a
-            href="https://github.com/makemile/shopping-fashion"
-            class="projects__btn"
-          >
-            <i class="fab fa-github"></i> Github
-          </a>
+          <div class="projects__info">
+            <h3>Shopping Fashion</h3>
+            <div class="projects__tags">
+              <span>React</span>
+              <span>TypeScript</span>
+              <span>Stripe API</span>
+              <span>SASS</span>
+              <span>Vite</span>
+            </div>
+          </div>
+          <div class="projects__actions">
+            <a
+              href="https://shopping-fashion.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="projects__btn"
+            >
+              <i class="fas fa-eye"></i> Preview
+            </a>
+            <a
+              href="https://github.com/makemile/shopping-fashion"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="projects__btn"
+            >
+              <i class="fab fa-github"></i> Github
+            </a>
+          </div>
         </div>
       </div>
       <div class="projects__item">
-        <Image src={poke} alt="My Project" />
+        <Image src={poke} alt="Pokemon Data Lovers Project" />
         <div class="projects__btns">
-          <a
-            href="https://makemile.github.io/LIM015-data-lovers/src/"
-            class="projects__btn"
-          >
-            <i class="fas fa-eye"></i> Preview
-          </a>
-          <a
-            href="https://github.com/makemile/LIM015-data-lovers"
-            class="projects__btn"
-          >
-            <i class="fab fa-github"></i> Github
-          </a>
-        </div>
-      </div>
-      <div class="projects__item">
-        <Image src={burgerqueen} alt="My Project" />
-        <div class="projects__btns">
-          <a href="#!" class="projects__btn">
-            <i class="fas fa-eye"></i> Preview
-          </a>
-          <a
-            href="https://github.com/makemile/LIM015-burger-queen/tree/subrama"
-            class="projects__btn"
-          >
-            <i class="fab fa-github"></i> Github
-          </a>
+          <div class="projects__info">
+            <h3>Data Lovers - Pokémon</h3>
+            <div class="projects__tags">
+              <span>JavaScript</span>
+              <span>REST API</span>
+              <span>HTML5/CSS3</span>
+            </div>
+          </div>
+          <div class="projects__actions">
+            <a
+              href="https://makemile.github.io/LIM015-data-lovers/src/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="projects__btn"
+            >
+              <i class="fas fa-eye"></i> Preview
+            </a>
+            <a
+              href="https://github.com/makemile/LIM015-data-lovers"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="projects__btn"
+            >
+              <i class="fab fa-github"></i> Github
+            </a>
+          </div>
         </div>
       </div>
     </div>
-
     <div class="social-icons">
-      <a href="https://github.com/makemile?tab=repositories">
+      <a
+        href="https://github.com/makemile?tab=repositories"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <i class="fab fa-github fa-2x"></i>
       </a>
-      <a href="http://www.linkedin.com/in/kengyamoncada">
+      <a
+        href="http://www.linkedin.com/in/kengyamoncada"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <i class="fa-brands fa-linkedin fa-2x"></i>
       </a>
     </div>
