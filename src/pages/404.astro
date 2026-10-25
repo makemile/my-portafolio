@@ -1,0 +1,27 @@
+---
+import "@styles/main.scss";
+import "@styles/_404.scss";
+---
+
+<main id="main-content" class="not-found">
+  <div class="not-found__container">
+    <p class="not-found__code" aria-hidden="true">404</p>
+    <h1 class="not-found__title">
+      P&aacute;gina <span class="not-found__title--accent">no encontrada</span>
+    </h1>
+    <p class="not-found__description">
+      Lo que buscas parece haberse desconfigurado, movido de ruta o ya no existe en este repositorio.
+    </p>
+    <div class="not-found__actions">
+      <a
+        href="/"
+        class="not-found__btn"
+        role="button"
+        aria-label="Volver a la p&aacute;gina de inicio del portafolio"
+      >
+        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+        <span>Volver al inicio</span>
+      </a>
+    </div>
+  </div>
+</main>

@@ -1,26 +1,342 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+import redsocial from "@images/redsocial.png";
+import ShopHome from "@images/ShopHome.jpeg";
+import poke from "@images/poke.jpg";
+import smartdespensa from "@images/smartdespensa.jpeg";
+
+import "@styles/_about.scss";
+import "@styles/_projects.scss";
 import "@styles/main.scss";
 import "@styles/_menu.scss";
-import "@styles/_projects.scss";
 import "@styles/_responsive.scss";
 ---
 
-<Layout title="Kengya Moncada" activePage="home">
-  <section class="home">
-    <h2>Hi! My Name Is</h2>
+<Layout title="Kengya Moncada">
+  <section class="home" id="inicio">
+    <h2 data-i18n="hero.greeting">Hi! My Name Is</h2>
     <h1 class="home__name">
       Kengya <span class="home__name--last">Moncada</span>
     </h1>
-    <h2>Frontend Engineer</h2>
-
-    <div class="social-icons">
-      <a href="https://github.com/makemile?tab=repositories">
+    <h2 data-i18n="hero.role">Frontend Engineer</h2>
+    <div class="home__social">
+      <a
+        href="https://github.com/makemile?tab=repositories"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+      >
         <i class="fab fa-github fa-2x"></i>
       </a>
-      <a href="http://www.linkedin.com/in/kengyamoncada">
+      <a
+        href="http://www.linkedin.com/in/kengyamoncada"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+      >
         <i class="fa-brands fa-linkedin fa-2x"></i>
       </a>
     </div>
   </section>
+  <section class="about" id="about">
+    <div class="about__header">
+      <h2 class="text-secondary" data-i18n="about.title">Sobre mí</h2>
+    </div>
+
+    <div class="about__bio">
+      <p data-i18n="about.bio">
+        Soy Frontend Engineer especializada en React, Angular y TypeScript, con
+        formación en Administración de Empresas e ingeniería web. Me enfoco en
+        arquitectura frontend limpia, optimización de rendimiento (Web
+        Performance), accesibilidad y seguridad en el cliente, garantizando
+        código escalable y mantenible. Actualmente integro Inteligencia
+        Artificial y servicios Cloud (AWS) para optimizar el desarrollo y
+        construir productos intuitivos.
+      </p>
+    </div>
+
+    <div class="about__skills">
+      <div class="about__skills-category">
+        <h3 class="text-secondary" data-i18n="about.categories.frontend">
+          Frontend Core
+        </h3>
+        <ul>
+          <li>JavaScript (ES6+)</li>
+          <li>TypeScript</li>
+          <li>React.js</li>
+          <li>Angular</li>
+          <li>Astro</li>
+          <li>HTML5 / SCSS</li>
+        </ul>
+      </div>
+
+      <div class="about__skills-category">
+        <h3 class="text-secondary" data-i18n="about.categories.performance">
+          Performance & Testing
+        </h3>
+        <ul>
+          <li>Vite</li>
+          <li>Code Splitting</li>
+          <li>Jest (Testing Unitario)</li>
+          <li>Redux</li>
+          <li>Web Performance</li>
+        </ul>
+      </div>
+
+      <div class="about__skills-category">
+        <h3 class="text-secondary" data-i18n="about.categories.cloud">
+          Cloud & Integraciones
+        </h3>
+        <ul>
+          <li>AWS S3 (Consumo)</li>
+          <li>AWS Cognito (Auth)</li>
+          <li>Firebase</li>
+          <li>APIs RESTful</li>
+          <li>Git / GitHub / Figma</li>
+        </ul>
+      </div>
+    </div>
+    <div class="jobs">
+      <div class="jobs__job">
+        <h2 class="text-secondary" data-i18n="about.jobs.seidor.period">
+          Mayo 2025 - Presente
+        </h2>
+        <h3>Seidor Consulting</h3>
+        <h6 data-i18n="about.jobs.seidor.role">Consultora Frontend I</h6>
+        <ul>
+          <li data-i18n="about.jobs.seidor.item1">
+            Lideré la optimización de rendimiento en una aplicación React
+            migrando la infraestructura de construcción de CRA a Vite e
+            implementando code splitting basado en rutas (React.lazy &
+            Suspense).
+          </li>
+          <li data-i18n="about.jobs.seidor.item2">
+            Reduje el tamaño del bundle inicial en un 54% (de 7 MB a 3 MB) y
+            recorté el tiempo del pipeline de CI/CD a la mitad en GitHub Pages.
+          </li>
+          <li data-i18n="about.jobs.seidor.item3">
+            Integré la gestión de activos estáticos almacenados en AWS S3
+            consumiendo recursos en la nube a través de la aplicación cliente.
+          </li>
+        </ul>
+      </div>
+
+      <div class="jobs__job">
+        <h2 class="text-secondary" data-i18n="about.jobs.zenta.period">
+          Ene 2025 - May 2025
+        </h2>
+        <h3>Zenta Group</h3>
+        <h6 data-i18n="about.jobs.zenta.role">Frontend Engineer</h6>
+        <ul>
+          <li data-i18n="about.jobs.zenta.item1">
+            Colaboré en la migración de un sistema monolítico en .NET hacia una
+            arquitectura moderna, desarrollando e integrando features clave en
+            Angular v17 y TypeScript.
+          </li>
+          <li data-i18n="about.jobs.zenta.item2">
+            Integré flujos de despliegue en entornos de nube con AWS y pipelines
+            de CI/CD.
+          </li>
+        </ul>
+      </div>
+
+      <div class="jobs__job">
+        <h2 class="text-secondary" data-i18n="about.jobs.ey.period">
+          Dic 2022 - Mar 2024
+        </h2>
+        <h3>EY Consulting</h3>
+        <h6 data-i18n="about.jobs.ey.role">Frontend Engineer</h6>
+        <ul>
+          <li data-i18n="about.jobs.ey.item1">
+            Construcción de aplicaciones web dinámicas en React.js e integración
+            de APIs RESTful para herramientas de análisis ambiental y de
+            sostenibilidad.
+          </li>
+          <li data-i18n="about.jobs.ey.item2">
+            Mantenimiento y desarrollo de features en Angular para aplicaciones
+            financieras.
+          </li>
+          <li data-i18n="about.jobs.ey.item3">
+            Gestión de estado global y optimizaciones que mejoraron la
+            experiencia de usuario (UX) en un 20%.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <div class="projects__header">
+      <h2 class="text-secondary" data-i18n="projects.title">Mis proyectos</h2>
+    </div>
+
+    <div class="projects__items">
+      <div class="projects__item">
+        <Image src={smartdespensa} alt="Smart Despensa Project" />
+        <div class="projects__btns">
+          <div class="projects__info">
+            <h3>Smart Despensa</h3>
+            <div class="projects__tags">
+              <span>Angular</span>
+              <span>Android</span>
+              <span>Capacitor</span>
+              <span>SASS</span>
+              <span>Firebase</span>
+            </div>
+          </div>
+          <div class="projects__actions">
+            <a
+              href="https://smart-despensa.web.app/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="projects__btn"
+            >
+              <i class="fas fa-eye"></i>
+              <span data-i18n="projects.preview">Preview</span>
+            </a>
+            <a
+              href="https://github.com/makemile/smart-despensa"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="projects__btn"
+            >
+              <i class="fab fa-github"></i>
+              <span data-i18n="projects.github">Github</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="projects__item">
+        <Image src={redsocial} alt="Red Social Project" />
+        <div class="projects__btns">
+          <div class="projects__info">
+            <h3>Red Social Tech</h3>
+            <div class="projects__tags">
+              <span>JavaScript</span>
+              <span>Firebase</span>
+              <span>Jest</span>
+              <span>HTML5/CSS3</span>
+            </div>
+          </div>
+          <div class="projects__actions">
+            <a
+              href="https://lim-015-social-network.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="projects__btn"
+            >
+              <i class="fas fa-eye"></i>
+              <span data-i18n="projects.preview">Preview</span>
+            </a>
+            <a
+              href="https://github.com/makemile/makemile.github.io-LIM015-social-network"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="projects__btn"
+            >
+              <i class="fab fa-github"></i>
+              <span data-i18n="projects.github">Github</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="projects__item">
+        <Image src={ShopHome} alt="Shopping Fashion Project" />
+        <div class="projects__btns">
+          <div class="projects__info">
+            <h3>Shopping Fashion</h3>
+            <div class="projects__tags">
+              <span>React</span>
+              <span>TypeScript</span>
+              <span>Stripe API</span>
+              <span>SASS</span>
+              <span>Vite</span>
+            </div>
+          </div>
+          <div class="projects__actions">
+            <a
+              href="https://shopping-fashion.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="projects__btn"
+            >
+              <i class="fas fa-eye"></i>
+              <span data-i18n="projects.preview">Preview</span>
+            </a>
+            <a
+              href="https://github.com/makemile/shopping-fashion"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="projects__btn"
+            >
+              <i class="fab fa-github"></i>
+              <span data-i18n="projects.github">Github</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="projects__item">
+        <Image src={poke} alt="Pokemon Data Lovers Project" />
+        <div class="projects__btns">
+          <div class="projects__info">
+            <h3>Data Lovers - Pokémon</h3>
+            <div class="projects__tags">
+              <span>JavaScript</span>
+              <span>REST API</span>
+              <span>HTML5/CSS3</span>
+            </div>
+          </div>
+          <div class="projects__actions">
+            <a
+              href="https://makemile.github.io/LIM015-data-lovers/src/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="projects__btn"
+            >
+              <i class="fas fa-eye"></i>
+              <span data-i18n="projects.preview">Preview</span>
+            </a>
+            <a
+              href="https://github.com/makemile/LIM015-data-lovers"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="projects__btn"
+            >
+              <i class="fab fa-github"></i>
+              <span data-i18n="projects.github">Github</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer__content">
+      <p class="footer__cta" data-i18n="footer.cta">Let's connect!</p>
+      <div class="footer__social">
+        <a
+          href="https://github.com/makemile?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="github"
+        >
+          <i class="fab fa-github fa-2x"></i>
+        </a>
+        <a
+          href="http://www.linkedin.com/in/kengyamoncada"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="linkedin"
+        >
+          <i class="fa-brands fa-linkedin fa-2x"></i>
+        </a>
+      </div>
+      <p class="footer__copy">
+        &copy; {new Date().getFullYear()} Kengya Moncada. <span
+          data-i18n="footer.builtWith">Built with Astro & SCSS.</span
+        >
+      </p>
+    </div>
+  </footer>
 </Layout>

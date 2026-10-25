@@ -1,27 +1,48 @@
 @use "config";
 
 .home {
-  height: 100%;
-  padding-top: 40vh;
+  height: 100vh;
+  padding-top: 35vh;
   overflow: hidden;
   align-items: center;
   text-align: center;
   background:
     linear-gradient(to right,
-      rgba(config.$primary-color, 0.9),
-      rgba(config.$primary-color, 0.3)),
+      rgba(39, 39, 39, 0.9),
+      rgba(39, 39, 39, 0.3)),
     url('../images/project-2.jpg') center top;
   background-size: cover;
+
+  h2 {
+    color: rgba(255, 255, 255, 0.85);
+  }
 
   &__name {
     font-size: 5rem;
     padding-bottom: 1rem;
     margin-bottom: 1rem;
-    border-bottom: 2px solid config.set-text-color(config.$primary-color);
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--text-primary);
 
     &--last {
       color: config.$secondary-color;
       font-weight: 700;
+    }
+  }
+
+  &__social {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+
+    a {
+      color: var(--text-primary);
+      @include config.transition-ease;
+
+      &:hover {
+        color: config.$secondary-color;
+      }
     }
   }
 }

@@ -5,39 +5,145 @@ interface Props {
 const { activePage = "home" } = Astro.props;
 ---
 
-<header>
-  <div class="menu-btn">
-    <span class="menu-btn__burger"></span>
-  </div>
-
-  <nav class="nav">
-    <ul class="menu-nav">
-      <li class:list={["menu-nav__item", { active: activePage === "home" }]}>
-        <a href="/" class="menu-nav__link"> Inicio </a>
-      </li>
-
-      <li class:list={["menu-nav__item", { active: activePage === "about" }]}>
-        <a href="/about" class="menu-nav__link"> Sobre mí </a>
-      </li>
-
-      <li
-        class:list={["menu-nav__item", { active: activePage === "projects" }]}
+<header class="header">
+  <div class="header__container">
+    <div class="header__controls">
+      <div class="lang-switch">
+        <button id="lang-es" class="lang-btn active">ES</button>
+        <span class="lang-divider">|</span>
+        <button id="lang-en" class="lang-btn">EN</button>
+      </div>
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        aria-label="Cambiar tema de color"
+        title="Cambiar tema"
       >
-        <a href="/projects" class="menu-nav__link"> Mis proyectos </a>
-      </li>
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+    </div>
+    <div class="menu-btn">
+      <span class="menu-btn__burger"></span>
+    </div>
+    <nav class="nav">
+      <ul class="menu-nav">
+        <li class:list={["menu-nav__item", { active: activePage === "home" }]}>
+          <a href="#inicio" class="menu-nav__link" data-i18n="nav.home">Inicio</a>
+        </li>
 
-      <li class:list={["menu-nav__item", { active: activePage === "contact" }]}>
-        <a href="/contact" class="menu-nav__link"> Contactame </a>
-      </li>
-    </ul>
-  </nav>
+        <li class:list={["menu-nav__item", { active: activePage === "about" }]}>
+          <a href="#about" class="menu-nav__link" data-i18n="nav.about">Sobre mí</a>
+        </li>
+
+        <li class:list={["menu-nav__item", { active: activePage === "projects" }]}>
+          <a href="#projects" class="menu-nav__link" data-i18n="nav.projects">Mis proyectos</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>
+
 <script>
+  import { translations, type Language } from "../i18n/translations";
+
+  const langEsBtn = document.getElementById("lang-es");
+  const langEnBtn = document.getElementById("lang-en");
+
+  let currentLang: Language = (localStorage.getItem("lang") as Language) || "es";
+
+  function updatePageLanguage(lang: Language) {
+    const elements = document.querySelectorAll<HTMLElement>("[data-i18n]");
+
+    elements.forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      if (!key) return;
+
+      const keys = key.split(".");
+      let value: any = translations[lang];
+
+      for (const k of keys) {
+        if (value) value = value[k];
+      }
+
+      if (value && typeof value === "string") {
+        el.textContent = value;
+      }
+    });
+
+    if (lang === "es") {
+      langEsBtn?.classList.add("active");
+      langEnBtn?.classList.remove("active");
+    } else {
+      langEnBtn?.classList.add("active");
+      langEsBtn?.classList.remove("active");
+    }
+
+    localStorage.setItem("lang", lang);
+    document.documentElement.setAttribute("lang", lang);
+  }
+
+  langEsBtn?.addEventListener("click", () => {
+    if (currentLang !== "es") {
+      currentLang = "es";
+      updatePageLanguage("es");
+    }
+  });
+
+  langEnBtn?.addEventListener("click", () => {
+    if (currentLang !== "en") {
+      currentLang = "en";
+      updatePageLanguage("en");
+    }
+  });
+
+  updatePageLanguage(currentLang);
+
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = document.getElementById("theme-icon");
+  const html = document.documentElement;
+  const savedTheme = localStorage.getItem("theme");
+  const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  if (savedTheme === "light" || (!savedTheme && !systemPrefersDark)) {
+    html.classList.add("light-mode");
+    themeIcon?.classList.replace("fa-moon", "fa-sun");
+  } else {
+    html.classList.remove("light-mode");
+    themeIcon?.classList.replace("fa-sun", "fa-moon");
+  }
+
+  themeToggle?.addEventListener("click", () => {
+    html.classList.toggle("light-mode");
+    const isLight = html.classList.contains("light-mode");
+
+    if (isLight) {
+      themeIcon?.classList.replace("fa-moon", "fa-sun");
+      localStorage.setItem("theme", "light");
+    } else {
+      themeIcon?.classList.replace("fa-sun", "fa-moon");
+      localStorage.setItem("theme", "dark");
+    }
+  });
+
+  const header = document.querySelector<HTMLElement>(".header");
+
+  const handleHeaderScroll = () => {
+    if (window.scrollY > 50) {
+      header?.classList.add("header--scrolled");
+    } else {
+      header?.classList.remove("header--scrolled");
+    }
+  };
+
+  window.addEventListener("scroll", handleHeaderScroll);
+  handleHeaderScroll();
+
   const menuBtn = document.querySelector<HTMLElement>(".menu-btn");
   const hamburger = document.querySelector<HTMLElement>(".menu-btn__burger");
   const nav = document.querySelector<HTMLElement>(".nav");
   const menuNav = document.querySelector<HTMLElement>(".menu-nav");
   const navItems = document.querySelectorAll<HTMLElement>(".menu-nav__item");
+  const menuLinks = document.querySelectorAll<HTMLElement>(".menu-nav__link");
 
   let showMenu: boolean = false;
 
@@ -49,15 +155,47 @@ const { activePage = "home" } = Astro.props;
       nav?.classList.add("open");
       menuNav?.classList.add("open");
       navItems?.forEach((item) => item.classList.add("open"));
-
       showMenu = true;
     } else {
       hamburger?.classList.remove("open");
       nav?.classList.remove("open");
       menuNav?.classList.remove("open");
       navItems?.forEach((item) => item.classList.remove("open"));
-
       showMenu = false;
     }
+  }
+
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (showMenu) toggleMenu();
+    });
+  });
+
+  const sections = document.querySelectorAll<HTMLElement>("section[id]");
+  const observerOptions = {
+    root: null,
+    rootMargin: "-30% 0px -60% 0px",
+    threshold: 0,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute("id");
+
+        navItems.forEach((item) => item.classList.remove("active"));
+
+        const activeLink = document.querySelector<HTMLAnchorElement>(`a[href="#${id}"]`);
+        if (activeLink && activeLink.parentElement) {
+          activeLink.parentElement.classList.add("active");
+        }
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach((section) => observer.observe(section));
+
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
   }
 </script>
