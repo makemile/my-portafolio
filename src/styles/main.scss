@@ -3,35 +3,43 @@
 @use 'menu';
 @use 'about';
 @use 'projects';
-@use 'contact';
 @use 'responsive';
 
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  @include config.transition-ease;
+}
+
 body {
-  background: config.$primary-color;
-  color: config.set-text-color(config.$primary-color);
-  height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1;
+  line-height: 1.6;
+  @include config.transition-ease;
 }
 
 h1,
 h2,
 h3 {
   font-weight: 400;
+  color: var(--text-primary);
 }
 
 a {
-  color: config.set-text-color(config.$primary-color);
+  color: var(--text-primary);
   text-decoration: none;
 }
 
 .text-secondary {
-  color: config.$secondary-color;
+  color: var(--color-accent);
 }
 
 header {
   position: fixed;
-  z-index: 2;
+  z-index: 100;
   width: 100%;
   padding: 1rem;
 }
@@ -47,21 +55,52 @@ main {
 
     a {
       padding: 0.4rem;
+      color: var(--text-primary);
       @include config.transition-ease;
 
       &:hover {
-        color: config.$secondary-color;
+        color: var(--color-accent);
       }
     }
   }
 }
 
-footer {
-  font-size: 1rem;
-  position: fixed;
-  bottom: 0.4rem;
-  right: 1rem;
-  text-align: right;
-  padding: 1rem;
-  color: config.set-text-color(config.$primary-color);
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+.footer {
+  padding: 3rem 1rem;
+  background-color: var(--bg-footer);
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  @include config.transition-ease;
+
+  &__cta {
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  &__social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    a {
+      color: var(--text-primary);
+      @include config.transition-ease;
+
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
+  }
+
+  &__copy {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
 }

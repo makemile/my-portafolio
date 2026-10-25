@@ -1,0 +1,94 @@
+@use "sass:color";
+@use 'config';
+
+.not-found {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 2rem;
+  text-align: center;
+  z-index: 1;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  &__code {
+    font-size: clamp(5rem, 15vw, 9rem);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-accent);
+    opacity: 0.85;
+    margin-bottom: 1rem;
+    letter-spacing: -2px;
+  }
+
+  &__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    color: var(--text-primary);
+
+    &--accent {
+      color: var(--color-accent);
+    }
+  }
+
+  &__description {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--color-accent);
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    @include config.transition-ease;
+
+    i {
+      @include config.transition-ease;
+    }
+
+    &:hover {
+      background-color: var(--color-accent);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+      i {
+        transform: translateX(-4px);
+      }
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+  }
+}

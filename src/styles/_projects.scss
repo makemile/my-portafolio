@@ -1,31 +1,20 @@
 @use "config";
 
 .projects {
-  padding-bottom: 2rem;
+  padding: 4rem 0 2rem 0;
 
-  &__bio-image {
-    height: 30vh;
-    width: 100%;
-    background:
-      linear-gradient(to right,
-        rgba(config.$primary-color, 0.9),
-        rgba(config.$primary-color, 0.3)),
-      url('../images/project-2.jpg') center top;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
+  &__header {
+    text-align: center;
+    margin-bottom: 2rem;
 
     .text-secondary {
       font-size: 2rem;
-      margin-bottom: 2rem;
     }
   }
 
   &__items {
     width: 60vw;
-    margin: 2rem auto 0 auto;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 2rem;
@@ -35,7 +24,7 @@
 
   &__item {
     position: relative;
-    border-bottom: 5px solid config.$secondary-color;
+    border-bottom: 5px solid var(--color-accent, config.$secondary-color);
     overflow: hidden;
     cursor: pointer;
     height: 220px;
@@ -53,7 +42,7 @@
       left: 0;
       height: 100%;
       width: 100%;
-      background: config.$secondary-color;
+      background: var(--bg-secondary);
       opacity: 0;
       @include config.transition-ease;
     }
@@ -91,7 +80,7 @@
     h3 {
       font-size: 1.15rem;
       font-weight: 600;
-      color: config.set-text-color(config.$secondary-color);
+      color: var(--text-primary);
       margin-bottom: 0.4rem;
     }
   }
@@ -105,8 +94,8 @@
     span {
       font-size: 0.7rem;
       padding: 0.2rem 0.5rem;
-      background: config.$primary-color;
-      color: config.$secondary-color;
+      background: var(--bg-primary);
+      color: var(--color-accent, config.$secondary-color);
       border-radius: 4px;
       font-weight: 500;
     }
@@ -120,12 +109,12 @@
   }
 
   &__btn {
-    color: config.set-text-color(config.$secondary-color);
+    color: var(--text-primary);
     font-weight: 500;
     @include config.transition-ease;
 
     &:hover {
-      color: config.set-text-color(config.set-text-color(config.$secondary-color));
+      color: var(--color-accent, config.$secondary-color);
     }
   }
 
@@ -135,7 +124,6 @@
   }
 
   footer {
-    transform:
-      rotate(90deg) translate(-3rem, -5rem);
+    transform: rotate(90deg) translate(-3rem, -5rem);
   }
 }

@@ -1,4 +1,27 @@
 @use "sass:color";
+@use "sass:meta"; 
+
+:root {
+  --bg-primary: #272727;
+  --bg-secondary: #414141;
+  --bg-footer: #1f1f1f;
+  --text-primary: #ffffff;
+  --text-muted: #b3b3b3;
+  --color-accent: #a081a3;
+  --border-color: rgba(160, 129, 163, 0.2);
+}
+
+html.light-mode {
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --bg-footer: #f1f3f5;
+  --bg-header: #d8bfd8;
+  --text-primary: #1a1a1a;
+  --text-muted: #555555;
+  --color-accent: #825386;
+  --border-color: rgba(130, 83, 134, 0.2);
+}
+
 $primary-color: #272727;
 $secondary-color: #a081a3;
 
@@ -9,17 +32,18 @@ $secondary-color: #a081a3;
 }
 
 @mixin transition-ease {
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @function set-text-color($color) {
-  @if (color.channel($color, "lightness", $space: hsl) > 40%) {
-    @return #000;
+  @if meta.type-of($color) == 'color' {
+    @if (color.channel($color, "lightness", $space: hsl) > 40%) {
+      @return #000;
+    } @else {
+      @return var(--text-primary);
+    }
   }
-
-  @else {
-    @return #fff;
-  }
+  @return var(--text-primary);
 }
 
 @mixin media-md {
