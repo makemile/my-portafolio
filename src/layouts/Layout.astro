@@ -30,14 +30,12 @@ const { title = "Kengya Moncada", activePage = "home" } = Astro.props;
     <script src="https://kit.fontawesome.com/300abb73bc.js"></script>
   </body>
 </html>
-<script>
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
+<script is:inline>
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    document.documentElement.classList.add("light-mode");
+  } else {
+    document.documentElement.classList.remove("light-mode");
+    localStorage.setItem("theme", "dark");
   }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    if (!window.location.hash || window.location.hash === '#inicio') {
-      window.scrollTo(0, 0);
-    }
-  });
 </script>
