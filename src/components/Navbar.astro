@@ -28,15 +28,23 @@ const { activePage = "home" } = Astro.props;
     <nav class="nav">
       <ul class="menu-nav">
         <li class:list={["menu-nav__item", { active: activePage === "home" }]}>
-          <a href="#inicio" class="menu-nav__link" data-i18n="nav.home">Inicio</a>
+          <a href="#inicio" class="menu-nav__link" data-i18n="nav.home"
+            >Inicio</a
+          >
         </li>
 
         <li class:list={["menu-nav__item", { active: activePage === "about" }]}>
-          <a href="#about" class="menu-nav__link" data-i18n="nav.about">Sobre mí</a>
+          <a href="#about" class="menu-nav__link" data-i18n="nav.about"
+            >Sobre mí</a
+          >
         </li>
 
-        <li class:list={["menu-nav__item", { active: activePage === "projects" }]}>
-          <a href="#projects" class="menu-nav__link" data-i18n="nav.projects">Mis proyectos</a>
+        <li
+          class:list={["menu-nav__item", { active: activePage === "projects" }]}
+        >
+          <a href="#projects" class="menu-nav__link" data-i18n="nav.projects"
+            >Mis proyectos</a
+          >
         </li>
       </ul>
     </nav>
@@ -49,7 +57,8 @@ const { activePage = "home" } = Astro.props;
   const langEsBtn = document.getElementById("lang-es");
   const langEnBtn = document.getElementById("lang-en");
 
-  let currentLang: Language = (localStorage.getItem("lang") as Language) || "es";
+  let currentLang: Language =
+    (localStorage.getItem("lang") as Language) || "es";
 
   function updatePageLanguage(lang: Language) {
     const elements = document.querySelectorAll<HTMLElement>("[data-i18n]");
@@ -102,7 +111,9 @@ const { activePage = "home" } = Astro.props;
   const themeIcon = document.getElementById("theme-icon");
   const html = document.documentElement;
   const savedTheme = localStorage.getItem("theme");
-  const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const systemPrefersDark = window.matchMedia(
+    "(prefers-color-scheme: dark)",
+  ).matches;
 
   if (savedTheme === "light" || (!savedTheme && !systemPrefersDark)) {
     html.classList.add("light-mode");
@@ -117,11 +128,11 @@ const { activePage = "home" } = Astro.props;
     const isLight = html.classList.contains("light-mode");
 
     if (isLight) {
-      themeIcon?.classList.replace("fa-moon", "fa-sun");
-      localStorage.setItem("theme", "light");
-    } else {
       themeIcon?.classList.replace("fa-sun", "fa-moon");
       localStorage.setItem("theme", "dark");
+    } else {
+      themeIcon?.classList.replace("fa-moon", "fa-sun");
+      localStorage.setItem("theme", "light");
     }
   });
 
@@ -185,7 +196,9 @@ const { activePage = "home" } = Astro.props;
 
         navItems.forEach((item) => item.classList.remove("active"));
 
-        const activeLink = document.querySelector<HTMLAnchorElement>(`a[href="#${id}"]`);
+        const activeLink = document.querySelector<HTMLAnchorElement>(
+          `a[href="#${id}"]`,
+        );
         if (activeLink && activeLink.parentElement) {
           activeLink.parentElement.classList.add("active");
         }
